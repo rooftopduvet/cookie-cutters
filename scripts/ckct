@@ -1,0 +1,13 @@
+#!/bin/bash
+CKCT_ROOT=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/..
+CUTTERS=$(ls -1 ${CKCT_ROOT}/cutters | tr '\n' '\0' | xargs -0 -n 1 basename)
+
+echo "Select a cutter:"
+select CUTTER in $CUTTERS; do
+    break
+done
+
+echo "Output to:"
+read OUTDIR
+
+cookiecutter ${CKCT_ROOT}/cutters/${CUTTER} -o $OUTDIR
