@@ -1,0 +1,15 @@
+{
+    "author": "Matthew Bilton",
+    "author_id": "teaocha",
+    "email": "matt@teaochadesign.com",
+    "app_slug": "my-app",
+    "app_name": "My App",
+    "naming_prefix": "{{cookiecutter.app_slug}}",
+    "github": "https://github.com/{{cookiecutter.author_id}}/{{cookiecutter.app_slug}}",
+    "bucket": "{{cookiecutter.app_slug}}.teaochadesign.com",
+    "aws_profile": "{{cookiecutter.author_id}}",
+    "_copy_without_render": [
+        "*assets",
+        "*public"
+    ]
+}

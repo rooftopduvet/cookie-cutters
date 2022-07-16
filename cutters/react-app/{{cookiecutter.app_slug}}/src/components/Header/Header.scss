@@ -1,0 +1,40 @@
+@import '~@/src/styles/variables.scss';
+
+.root {
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 52px;
+}
+
+.inner-wrapper {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 80vw;
+  max-width: 800px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  max-width: 80vw;
+  z-index: 1;
+
+  ul {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  .nav-item {
+    margin: 0px 8px;
+  }
+}

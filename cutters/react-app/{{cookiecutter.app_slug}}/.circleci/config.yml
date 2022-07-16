@@ -1,0 +1,44 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@4.1
+  aws-s3: circleci/aws-s3@2.0
+
+jobs:
+  lint_test:
+    executor:
+      name: node/default
+      tag: '16.11.1'
+    steps:
+      - checkout
+      - run: npm install --dev
+      - run: npm run lint
+      - run: npm run test
+
+  build_deploy:
+    executor:
+      name: node/default
+      tag: '16.11.1'
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+      - aws-s3/sync:
+          from: dist/
+          to: s3://{{cookiecutter.bucket}}
+          arguments: |
+              --acl public-read \
+              --delete
+
+workflows:
+  lint_test_deploy:
+    jobs:
+      - lint_test
+      - build_deploy:
+          context: aws
+          requires:
+            - lint_test
+          filters:
+            branches:
+              only:
+                - main

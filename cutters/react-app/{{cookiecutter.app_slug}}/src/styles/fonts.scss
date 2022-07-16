@@ -1,0 +1,22 @@
+$headerFont: 'Ibarra Real Nova', serif;
+$contentFont: 'Roboto', sans-serif;
+
+$font-size-su:       42px !default;
+$font-size-xxl:      28px !default;
+$font-size-xl-plus:  24px !default;
+$font-size-xl:       21px !default;
+$font-size-l:        17px !default;
+$font-size-m-plus:   15px !default;
+$font-size-m:        14px !default;
+$font-size-s-plus:   13px !default;
+$font-size-s:        12px !default;
+$font-size-xs:       11px !default;
+$font-size-mi:       10px !default;
+
+$font-weight-regular: 400;
+$font-weight-light: 300;
+
+:export {
+  headerFont: $headerFont;
+  contentFont: $contentFont;
+}

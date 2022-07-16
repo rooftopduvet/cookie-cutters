@@ -1,0 +1,23 @@
+@mixin clearfix {
+  &::after {
+    content: '';
+    clear: both;
+  }
+}
+
+@mixin fillParent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin hideScrollbars {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { 
+      display: none; 
+  }
+}
