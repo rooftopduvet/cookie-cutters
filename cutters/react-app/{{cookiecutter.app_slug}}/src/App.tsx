@@ -34,7 +34,7 @@ export function App(): JSX.Element {
   )
 
   return (
-    <div data-testid={'{{cookiecutter.naming-prefix}}-root'}>
+    <div data-testid={'{{cookiecutter.naming_prefix}}-root'}>
       <Header navItems={navItems} />
       <main className={classNames['main']} >
         <Switch>

@@ -10,6 +10,7 @@ import '@/src/styles/initialize.scss'
 
 loadTheme(theme)
 initializeIcons()
+document.body.style.background = theme.semanticColors.bodyBackground
 
 ReactDOM.render(
   <BrowserRouter>
