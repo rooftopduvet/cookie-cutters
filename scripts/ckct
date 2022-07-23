@@ -7,7 +7,6 @@ select CUTTER in $CUTTERS; do
     break
 done
 
-echo "Output to:"
-read OUTDIR
+OUTDIR=.
 
 cookiecutter ${CKCT_ROOT}/cutters/${CUTTER} -o $OUTDIR
