@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "{{cookiecutter.project_name}}"
+version = "0.1.0"
+description = "Code for {{cookiecutter.project_name}}"
+authors = ["{{cookiecutter.author}} <{{cookiecutter.email}}>"]
+
+[tool.poetry.dependencies]
+python = "3.9.*"
+matplotlib = "^3.5"
+numpy = "^1.23"
+requests = "^2.28"
+scipy = "^1.8"
+
+[tool.poetry.dev-dependencies]
+pytest-mock = "^3.8"
+pytest-cov = "^3.0"
+autopep8 = "^1.6"
+furo = "^2022.6.0"
+sphinx = "^5.0"
+
+[tool.autopep8]
+max_line_length = 100
+ignore = "E501,W6"  # or ["E501", "W6"]
+in-place = true
+recursive = true
+aggressive = 3
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
