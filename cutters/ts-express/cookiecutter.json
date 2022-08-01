@@ -3,7 +3,6 @@
     "author_id": "author-id",
     "email": "author@example.com",
     "project_name": "my-project",
-    "module_name": "my_project",
     "github": "https://github.com/{{cookiecutter.author_id}}/{{cookiecutter.project_name}}",
     "_copy_without_render": []
 }
