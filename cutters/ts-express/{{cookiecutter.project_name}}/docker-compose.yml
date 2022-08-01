@@ -1,0 +1,37 @@
+version: '3.9'
+
+networks:
+  {{cookiecutter.project_name}}:
+    driver: bridge
+
+# -----------------------------------------
+
+services:
+
+  db:
+    image: postgres:alpine3.16
+    networks:
+      - {{cookiecutter.project_name}}
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: ${DB_CONTAINER_NAME}
+
+  app:
+    image: ${APP_DOCKER_IMG}
+    networks:
+      - {{cookiecutter.project_name}}
+    volumes:
+      - ${PROJECT_ROOT}:/app
+    command: npm run start:dev
+    ports:
+      - 8000:8000
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - NODE_ENV=development
+    container_name: ${APP_CONTAINER_NAME}
+    depends_on:
+      - db
