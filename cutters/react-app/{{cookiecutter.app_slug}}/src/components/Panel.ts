@@ -1,1 +1,1 @@
-export { Panel, PanelType } from '@fluentui/react'
+export { Panel, PanelType } from '@fluentui/react';

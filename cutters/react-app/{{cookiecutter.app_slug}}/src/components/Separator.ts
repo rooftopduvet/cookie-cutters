@@ -1,1 +1,1 @@
-export { Separator } from '@fluentui/react'
+export { Separator } from '@fluentui/react';

@@ -1,1 +1,1 @@
-export { Overlay } from '@fluentui/react'
+export { Overlay } from '@fluentui/react';

@@ -1,4 +1,4 @@
 export {
   IconButton,
   PrimaryButton,
-} from '@fluentui/react'
+} from '@fluentui/react';

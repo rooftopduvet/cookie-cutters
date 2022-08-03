@@ -1,3 +1,1 @@
-export {
-  memoizeFunction,
-} from '@fluentui/utilities'
+export { memoizeFunction } from '@fluentui/utilities';

@@ -1,5 +1,5 @@
-import { createTheme } from '@/src/theming'
-import fonts from '@/src/styles/fonts.scss'
+import { createTheme } from '@/src/theming';
+import fonts from '@/src/styles/fonts.scss';
 
 const palette = {
   themePrimary: '#00803e',
@@ -24,12 +24,12 @@ const palette = {
   neutralDark: '#201f1e',
   black: '#000000',
   white: '#fafdff',
-}
+};
 
 const theme = createTheme({
   defaultFontStyle: { fontFamily: fonts.contentFont },
-  palette
-})
+  palette,
+});
 
 const paletteInverted = {
   themePrimary: '#02e879',
@@ -54,16 +54,16 @@ const paletteInverted = {
   neutralDark: '#f4f4f4',
   black: '#f8f8f8',
   white: '#242e33',
-}
+};
 
 const themeInverted = createTheme({
   defaultFontStyle: { fontFamily: fonts.contentFont },
   palette: paletteInverted,
-})
+});
 
 export {
   palette,
   theme,
   paletteInverted,
   themeInverted,
-}
+};

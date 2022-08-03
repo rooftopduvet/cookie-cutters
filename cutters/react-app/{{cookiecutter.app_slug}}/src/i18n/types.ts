@@ -16,4 +16,4 @@ export type AppStrings = {
   footer: {
     message: string,
   }
-}
+};

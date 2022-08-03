@@ -45,7 +45,7 @@ test-unit:
 coverage:
 	docker run -it --rm \
 		-v $(PROJECT_ROOT):/app \
-		$(NODE_DEV_SHELL_IMAGE_NAME) npm run test-coverage
+		$(NODE_DEV_SHELL_IMAGE_NAME) npm run test:coverage
 
 # ---------------------------------------------
 
@@ -69,8 +69,8 @@ deploy: build
 
 node-dev-shell:
 	docker run -it --rm \
-		-p 8080:8080 \
-		-p 8088:8088 \
+		-p 8081:8080 \
+		-p 8089:8088 \
 		-v $(PROJECT_ROOT):/app \
 		-h node-dev-shell \
 		--name $(NODE_DEV_SHELL_IMAGE_NAME) \

@@ -7,44 +7,42 @@ Creates a simple html element to inject into the header of a webpage.
 @arg twoSided: boolean    Whether two render a separate closing tag.
                           (e.g. <script><script> vs <script/>)
 */
-function makeHTMLElement(tagName, attributes={}, twoSided=false) {
-  let element = `<${tagName}`
+function makeHTMLElement(tagName, attributes = {}, twoSided = false) {
+  let element = `<${tagName}`;
 
   for (attr of Object.keys(attributes)) {
-    element = `${element} ${attr}="${attributes[attr]}"`
+    element = `${element} ${attr}="${attributes[attr]}"`;
   }
 
   if (twoSided) {
-    element = `${element}></${tagName}>`
+    element = `${element}></${tagName}>`;
   } else {
-    element = `${element}/>`
+    element = `${element}/>`;
   }
 
-  return element
+  return element;
 }
 
 /*
 @description
 Gets substitutions for HTMLWebpackPlugin
 */
-module.exports.makeHTMLSubstitutions = function(assetPath, externals=[]) {
+module.exports.makeHTMLSubstitutions = function (assetPath, externals = []) {
   return {
     title: '{{cookiecutter.app_name}}',
-    externals: externals.reduce(
-      (scripts, external) => (
-        `${scripts}${makeHTMLElement('script', { src: external.src }, true)}`
-      ), ''
-    ),
+    externals: externals.reduce((scripts, external) => (
+      `${scripts}${makeHTMLElement('script', { src: external.src }, true)}`
+    ), ''),
     faviconLink: makeHTMLElement(
       'link',
       {
         rel: 'shortcut icon',
         href: `${assetPath}favicon.ico`,
-      }
+      },
     ),
     meta: {
       description: '',
-      keywords: ''
+      keywords: '',
     },
-  }
-}
+  };
+};

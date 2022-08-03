@@ -1,4 +1,4 @@
-export { createTheme } from '@fluentui/theme'
+export { createTheme } from '@fluentui/theme';
 
 export {
   getTheme,
@@ -8,8 +8,8 @@ export {
   mergeStyleSets,
   setIconOptions,
   IStyle,
-} from '@fluentui/style-utilities'
+} from '@fluentui/style-utilities';
 
 export {
   initializeIcons,
-} from '@fluentui/font-icons-mdl2'
+} from '@fluentui/font-icons-mdl2';

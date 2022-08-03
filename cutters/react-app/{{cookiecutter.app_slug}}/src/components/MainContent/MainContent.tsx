@@ -1,39 +1,43 @@
-import { memoizeFunction } from '@/src/utils'
-import _classNames from './MainContent.scss'
+import React from 'react';
+import _classNames from './MainContent.scss';
 
-export interface IMainContent {
-  children: JSX.Element,
-  className?: string,
+export enum ContainerStyle {
+  transparent = 'container-style--transparent',
+  panel = 'container-style--panel',
 }
 
-const makeClassNames = memoizeFunction(
-  (rootClassName?: string) => {
-    let classNames = { ..._classNames }
+export interface IMainContent {
+  children: React.ReactElement<any>,
+  className?: string,
+  containerStyle?: ContainerStyle,
+}
 
-    if (rootClassName) {
-      classNames['root'] = `${classNames['root']} ${rootClassName}`
-    }
+/**
+ * Styles wrapper for the content of a <main> element of a page.
+ * This element ensures that main content has a maximum width
+ * and resizes with the screen accordingly. It will also deal
+ * with any enter/exit animations etc.
+ */
+export function MainContent(props: IMainContent): React.ReactElement<any> {
+  const {
+    children = null,
+    className = null,
+    containerStyle = ContainerStyle.panel,
+  } = props;
 
-    return classNames
+  const classNames = { ..._classNames };
+  classNames.root = `${classNames.root} ${containerStyle}`;
+
+  if (props.className) {
+    classNames.root = `${classNames.root} ${className}`;
   }
-)
-
-/*
-@ description
-Styles wrapper for the content of a <main> element of a page.
-This element ensures that main content has a maximum width and
-resizes with the screen accordingly. It will also deal with any
-enter/exit animations etc.
-*/
-export function MainContent(props: IMainContent): JSX.Element {
-  const classNames = makeClassNames(props.className)
 
   return (
     <div
-      data-testid={'MainContent'}
-      className={classNames['root']}
+      data-testid="MainContent"
+      className={classNames.root}
     >
-      {props.children}
+      {children}
     </div>
-  )
+  );
 }

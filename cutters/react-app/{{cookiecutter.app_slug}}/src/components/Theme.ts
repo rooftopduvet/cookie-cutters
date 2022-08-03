@@ -1,1 +1,1 @@
-export { ThemeProvider, ITheme } from '@fluentui/react'
+export { ThemeProvider, ITheme } from '@fluentui/react';

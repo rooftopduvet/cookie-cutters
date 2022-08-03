@@ -1,23 +1,23 @@
-const path = require('path')
-const webpack = require('webpack')
-const TerserPlugin = require("terser-webpack-plugin")
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-const { getExternals } = require('./config/externals')
-const { makeHTMLSubstitutions } = require('./config/html-substitutions')
+const path = require('path');
+const webpack = require('webpack');
+const TerserPlugin = require('terser-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { getExternals } = require('./config/externals');
+const { makeHTMLSubstitutions } = require('./config/html-substitutions');
 
 const env = {
   ASSET_PATH: process.env.ASSET_PATH || '/',
   NODE_ENV: process.env.NODE_ENV || 'development',
   PORT: process.env.PORT || '8080',
-}
+};
 
-const isProduction = (env.NODE_ENV === 'production')
+const isProduction = (env.NODE_ENV === 'production');
 
-const distDir = path.resolve(__dirname, 'dist')
-const externals = getExternals(isProduction)
+const distDir = path.resolve(__dirname, 'dist');
+const externals = getExternals(isProduction);
 
 //--------------------------------------------------------------------------------
 
@@ -34,8 +34,8 @@ let plugins = [
     patterns: [
       { from: 'public', to: distDir },
     ],
-  })
-]
+  }),
+];
 
 if (!isProduction) {
   plugins = [
@@ -44,8 +44,8 @@ if (!isProduction) {
       analyzerHost: '0.0.0.0',
       analyzerPort: 8088,
       openAnalyzer: false,
-    })
-  ]
+    }),
+  ];
 }
 
 //--------------------------------------------------------------------------------
@@ -55,15 +55,13 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
     plugins: [
-      new TsconfigPathsPlugin()
-    ]
+      new TsconfigPathsPlugin(),
+    ],
   },
-  externals: externals.reduce(
-    (res, external) => ({
-      ...res,
-      [external.name]: external.globalVarName,
-    }), {}
-  ),
+  externals: externals.reduce((res, external) => ({
+    ...res,
+    [external.name]: external.globalVarName,
+  }), {}),
   devtool: 'inline-source-map',
   mode: env.NODE_ENV,
   module: {
@@ -84,7 +82,7 @@ module.exports = {
             options: {
               modules: {
                 localIdentName: 'teaocha-[name]--[local]--[hash:base64:5]',
-              }
+              },
             },
           },
           // Compiles Sass to CSS
@@ -103,10 +101,10 @@ module.exports = {
               // `resourceQuery` - `?foo=bar`
 
               if (isProduction) {
-                return '[path][name]_[contenthash].[ext]'
+                return '[path][name]_[contenthash].[ext]';
               }
 
-              return '[path][name].[ext]'
+              return '[path][name].[ext]';
             },
           },
         },
@@ -139,7 +137,7 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         extractComments: true,
-      })
+      }),
     ],
   },
   plugins,
@@ -154,4 +152,4 @@ module.exports = {
     path: distDir,
     publicPath: env.ASSET_PATH,
   },
-}
+};

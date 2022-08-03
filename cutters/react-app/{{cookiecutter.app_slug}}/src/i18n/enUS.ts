@@ -1,4 +1,4 @@
-import { AppStrings } from './types'
+import { AppStrings } from './types';
 
 export const enUS: AppStrings = {
   pages: {
@@ -16,6 +16,6 @@ export const enUS: AppStrings = {
     navigation: 'Main navigation',
   },
   footer: {
-    message: `© {{cookiecutter.app_name}} ${(new Date()).getFullYear()}`
-  }
-}
+    message: `© {{cookiecutter.app_name}} ${(new Date()).getFullYear()}`,
+  },
+};
