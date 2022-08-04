@@ -1,12 +1,23 @@
 #!/bin/bash
 CKCT_ROOT=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/..
-CUTTERS=$(ls -1 ${CKCT_ROOT}/cutters | tr '\n' '\0' | xargs -0 -n 1 basename)
+LANGS=$(ls -1 ${CKCT_ROOT}/cutters | tr '\n' '\0' | xargs -0 -n 1 basename)
 
-echo "Select a cutter:"
-select CUTTER in $CUTTERS; do
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e ${YELLOW}"Select a language/framework:"${NC}
+select LANG in ${LANGS}; do
+    break
+done
+
+CUTTERS=$(ls -1 ${CKCT_ROOT}/cutters/${LANG} | tr '\n' '\0' | xargs -0 -n 1 basename)
+
+echo -e ${YELLOW}"Select a template:"${NC}
+select CUTTER in ${CUTTERS}; do
     break
 done
 
 OUTDIR=.
 
-cookiecutter ${CKCT_ROOT}/cutters/${CUTTER} -o $OUTDIR
+cookiecutter ${CKCT_ROOT}/cutters/${LANG}/${CUTTER} -o $OUTDIR
