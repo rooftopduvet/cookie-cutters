@@ -1,1 +1,1 @@
-export * from './{{cookiecutter.name}}'
+export * from './{{cookiecutter.name}}';
