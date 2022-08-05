@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    'jest/globals': true,
   },
   extends: [
     'plugin:@typescript-eslint/recommended',
@@ -15,7 +16,6 @@ module.exports = {
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
     tsconfigRootDir: './',
   },
   plugins: [
