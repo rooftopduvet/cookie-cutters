@@ -20,4 +20,6 @@ done
 
 OUTDIR=.
 
-cookiecutter ${CKCT_ROOT}/cutters/${LANG}/${CUTTER} -o $OUTDIR
+CUTTER_PATH=${CKCT_ROOT}/cutters/${LANG}/${CUTTER}
+
+cookiecutter ${CUTTER_PATH} -o $OUTDIR
